@@ -1,0 +1,32 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Draggable Test</title>
+  <link rel="stylesheet" href="build/build.css" />
+  <style>
+    body { height: 100%; min-height: 500px }
+    #thing {
+      background-color: black;
+      border: 2px solid white;
+      color: white;
+      position: absolute;
+      top: 0;
+      left: 500px;
+      height: 200px;
+      width: 200px
+    }
+  </style>
+</head>
+<body>
+  <h1>Draggable Tests</h1>
+  <div id="thing">drag me somewhere</div>
+  <script src="build/build.js"></script>
+  <script>
+    var draggable = require('draggable');
+    var el = document.querySelector('#thing');
+    draggable(el);
+  </script>
+</body>
+</html>
