@@ -2,7 +2,7 @@
   "name": "draggable",
   "repo": "stephenmathieson/draggable",
   "description": "Make an element draggable",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "keywords": [],
   "dependencies": {
     "gjohnson/uuid": "*"

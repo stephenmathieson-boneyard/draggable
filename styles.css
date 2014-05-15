@@ -1,0 +1,76 @@
+
+html {
+  height: 100%;
+  width: 100%;
+  font-family: Helvetica, sans-serif;
+  background-color: #eee;
+  color: #bbb;
+}
+
+body {
+  height: calc(100% - 40px);
+  margin: 0;
+  padding: 20px;
+}
+
+h1 {
+  margin: 0;
+  font-weight: 300;
+}
+
+.draggable[draggable] {
+  position: absolute;
+  height: 100px;
+  width: 100px;
+  background-color: #bbb;
+  color: #eee;
+  font-size: 1.4em;
+}
+
+#top-left {
+  top: 100px;
+  left: 100px;
+}
+
+#top-left:before {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  content: 'TL';
+}
+
+#top-right {
+  top: 100px;
+  right: 100px;
+}
+
+#top-right:before {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  content: 'TR';
+}
+
+#bottom-left {
+  bottom: 100px;
+  left: 100px;
+}
+
+#bottom-left:before {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  content: 'BL';
+}
+
+#bottom-right {
+  bottom: 100px;
+  right: 100px;
+}
+
+#bottom-right:before {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  content: 'BR';
+}
