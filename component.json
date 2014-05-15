@@ -3,17 +3,12 @@
   "repo": "stephenmathieson/draggable",
   "description": "Make an element draggable",
   "version": "0.1.0",
-  "keywords": [],
+  "keywords": ["dragable", "drag", "drop"],
   "dependencies": {
     "gjohnson/uuid": "*"
   },
-  "development": {},
   "license": "MIT",
   "main": "index.js",
-  "scripts": [
-    "index.js"
-  ],
-  "styles": [
-    "draggable.css"
-  ]
+  "scripts": ["index.js"],
+  "styles": ["draggable.css"]
 }

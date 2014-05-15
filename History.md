@@ -2,8 +2,7 @@
 0.1.0 / 2014-05-15
 ==================
 
- * Adds support for `right` and `bottom` style properties
- * Improvements to the test fixture
+ * Adds support for bottom and right style properties
 
 0.0.1 / 2014-03-06
 ==================
