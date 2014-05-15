@@ -32,15 +32,8 @@ function draggable(element, container) {
   container.addEventListener('drop', ondrop);
 
   function ondragstart(e) {
-    var style = getComputedStyle(e.target, null);
-    var dropOffset = {};
-
-    dropOffset.left = parseInt(style.getPropertyValue('left'), 10) - e.clientX;
-    dropOffset.right = parseInt(style.getPropertyValue('right'), 10) - (window.innerWidth - e.clientX);
-    dropOffset.top = parseInt(style.getPropertyValue('top'), 10) - e.clientY;
-    dropOffset.bottom = parseInt(style.getPropertyValue('bottom'), 10) - (window.innerHeight - e.clientY);
-
-    e.dataTransfer.setData(id, JSON.stringify(dropOffset));
+    var o = offset(e);
+    e.dataTransfer.setData(id, JSON.stringify(o));
   }
 
   function ondragover(e) {
@@ -66,4 +59,30 @@ function draggable(element, container) {
 
     e.preventDefault();
   }
+}
+
+/**
+ * Get the offset for the given `e`.
+ *
+ * @api private
+ * @param {Event} e
+ * @return {Object}
+ */
+
+function offset(e) {
+  var style = getComputedStyle(e.target, null);
+  return {
+    left: parseValue(style, 'left') - e.clientX,
+    right: parseValue(style, 'right') - (window.innerWidth - e.clientX),
+    top: parseValue(style, 'top') - e.clientY,
+    bottom: parseValue(style, 'bottom') - (window.innerHeight - e.clientY)
+  };
+}
+
+/**
+ * Get the value of the CSS property `name` as an int.
+ */
+
+function parseValue(style, name) {
+  return parseInt(style.getPropertyValue(name), 10);
 }
