@@ -11,6 +11,10 @@ module.exports = draggable;
  * Make `element` draggable within `container`,
  * defaulting to the body.
  *
+ * Uses `top` and `left` positions by default.
+ * Uses `bottom` and `right` in lieu of their
+ * counterparts.
+ *
  * @api public
  * @param {HTMLElement} element
  * @param {HTMLElement} [container]
@@ -29,12 +33,14 @@ function draggable(element, container) {
 
   function ondragstart(e) {
     var style = getComputedStyle(e.target, null);
-    var left = parseInt(style.getPropertyValue('left'), 10) - e.clientX;
-    var top = parseInt(style.getPropertyValue('top'), 10) - e.clientY;
-    e.dataTransfer.setData(id, JSON.stringify({
-      left: left,
-      top: top
-    }));
+    var dropOffset = {};
+
+    dropOffset.left = parseInt(style.getPropertyValue('left'), 10) - e.clientX;
+    dropOffset.right = parseInt(style.getPropertyValue('right'), 10) - (window.innerWidth - e.clientX);
+    dropOffset.top = parseInt(style.getPropertyValue('top'), 10) - e.clientY;
+    dropOffset.bottom = parseInt(style.getPropertyValue('bottom'), 10) - (window.innerHeight - e.clientY);
+
+    e.dataTransfer.setData(id, JSON.stringify(dropOffset));
   }
 
   function ondragover(e) {
@@ -46,10 +52,18 @@ function draggable(element, container) {
     if (!data) return;
     data = JSON.parse(data);
 
-    element.style.left = (e.clientX + data.left) + 'px';
-    element.style.top = (e.clientY + data.top) + 'px';
+    if (data.left) {
+      element.style.left = (e.clientX + data.left) + 'px';
+    } else {
+      element.style.right = ((window.innerWidth - e.clientX) + data.right) + 'px';
+    }
 
-    // TODO maybe emit an event?
+    if (data.top) {
+      element.style.top = (e.clientY + data.top) + 'px';
+    } else {
+      element.style.bottom = ((window.innerHeight - e.clientY) + data.bottom) + 'px';
+    }
+
     e.preventDefault();
   }
 }

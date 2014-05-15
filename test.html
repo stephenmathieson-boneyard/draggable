@@ -3,30 +3,24 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Draggable Test</title>
-  <link rel="stylesheet" href="build/build.css" />
-  <style>
-    body { height: 100%; min-height: 500px }
-    #thing {
-      background-color: black;
-      border: 2px solid white;
-      color: white;
-      position: absolute;
-      top: 0;
-      left: 500px;
-      height: 200px;
-      width: 200px
-    }
-  </style>
+  <title>Draggable</title>
+  <link rel="stylesheet" href="build/build.css">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <h1>Draggable Tests</h1>
-  <div id="thing">drag me somewhere</div>
+  <h1>Draggable</h1>
+  <div id="top-left"></div>
+  <div id="top-right"></div>
+  <div id="bottom-left"></div>
+  <div id="bottom-right"></div>
   <script src="build/build.js"></script>
   <script>
     var draggable = require('draggable');
-    var el = document.querySelector('#thing');
-    draggable(el);
+    var divs = document.querySelectorAll('body > div');
+    divs = Array.prototype.slice.call(divs);
+    divs.forEach(function (div) {
+      draggable(div);
+    });
   </script>
 </body>
 </html>
