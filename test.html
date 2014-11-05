@@ -10,15 +10,17 @@
 <body>
   <h1>Draggable</h1>
   <div id="top-left"></div>
-  <div id="top-right"></div>
+  <div id="top-right">
+    <img src="http://placehold.it/75">
+  </div>
   <div id="bottom-left"></div>
   <div id="bottom-right"></div>
   <script src="build/build.js"></script>
   <script>
     var draggable = require('draggable');
     var divs = document.querySelectorAll('body > div');
-    divs = Array.prototype.slice.call(divs);
-    divs.forEach(function (div) {
+    [].slice.call(divs)
+    .forEach(function (div) {
       draggable(div);
     });
   </script>
