@@ -31,9 +31,10 @@ function draggable(element, container) {
   container.addEventListener('dragover', ondragover);
   container.addEventListener('drop', ondrop);
 
-  noDragImages(element);
-
   function ondragstart(e) {
+    if (e.target.nodeName == 'IMG') {
+      return e.preventDefault();
+    }
     var style = getComputedStyle(e.target, null);
     var dropOffset = {};
 
@@ -67,22 +68,5 @@ function draggable(element, container) {
     }
 
     e.preventDefault();
-  }
-}
-
-/**
- * Prevents default dragging behavior of
- * images that are children of `element`.
- *
- * @param {HTMLElement} element
- * @api private
- */
-
-function noDragImages(element) {
-  var images = element.querySelectorAll('img');
-  if (images.length) {
-    [].slice.call(images).forEach(function (img) {
-      img.setAttribute('ondragstart', 'event.preventDefault()');
-    });
   }
 }
