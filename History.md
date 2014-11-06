@@ -1,4 +1,10 @@
 
+0.1.1 / 2014-11-06
+==================
+
+  * index: Ignore image ondragstart
+  * test: Add an example containing images
+
 0.1.0 / 2014-05-15
 ==================
 
