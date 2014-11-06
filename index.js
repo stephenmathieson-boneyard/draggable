@@ -32,6 +32,7 @@ function draggable(element, container) {
   container.addEventListener('drop', ondrop);
 
   function ondragstart(e) {
+    if ('IMG' == e.target.nodeName) return;
     var o = offset(e);
     e.dataTransfer.setData(id, JSON.stringify(o));
   }
